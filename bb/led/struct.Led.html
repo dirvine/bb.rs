@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Led` struct in crate `bb`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Led">
+
+    <title>bb::led::Led - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>bb</a>::<wbr><a href='index.html'>led</a></p><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.Led.html' title='An LED controller'>Led</a></div><div class='block enum'><h2>Enums</h2><a class='enum ' href='enum.Number.html' title='LED identifier'>Number</a><a class='enum ' href='enum.Trigger.html' title='LED trigger modes'>Trigger</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>bb</a>::<wbr><a href='index.html'>led</a>::<wbr><a class='struct' href=''>Led</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-379' href='../../src/bb/led.rs.html#49-51'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Led {
+    // some fields omitted
+}</pre><div class='docblock'><p>An LED controller</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../../bb/led/struct.Led.html' title='bb::led::Led'>Led</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(number: <a class='enum' href='../../bb/led/enum.Number.html' title='bb::led::Number'>Number</a>) -&gt; <a class='struct' href='../../bb/led/struct.Led.html' title='bb::led::Led'>Led</a></code></h4>
+<div class='docblock'><p>Create access to an LED</p>
+</div><h4 id='method.blink' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.blink' class='fnname'>blink</a>(&amp;self, on_ms: <a href='http://doc.rust-lang.org/nightly/std/primitive.u16.html'>u16</a>, off_ms: <a href='http://doc.rust-lang.org/nightly/std/primitive.u16.html'>u16</a>)</code></h4>
+<div class='docblock'><p>Makes the LED blink</p>
+
+<h1 id="example" class='section-header'><a
+                           href="#example">Example</a></h1><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>use</span> <span class='ident'>bb</span>::<span class='ident'>led</span>::{<span class='ident'>Led</span>, <span class='ident'>Zero</span>};
+
+<span class='comment'>// On for one second, off for half a second</span>
+<span class='ident'>Led</span>::<span class='ident'>new</span>(<span class='ident'>Zero</span>).<span class='ident'>blink</span>(<span class='number'>1000</span>, <span class='number'>500</span>);
+</pre>
+</div><h4 id='method.set_brightness' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.set_brightness' class='fnname'>set_brightness</a>(&amp;self, brightness: <a href='http://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>)</code></h4>
+<div class='docblock'><p>Changes the brightness of the LED</p>
+</div><h4 id='method.set_high' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.set_high' class='fnname'>set_high</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Turns on the LED</p>
+</div><h4 id='method.set_low' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.set_low' class='fnname'>set_low</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Turns off the LED</p>
+</div><h4 id='method.set_trigger' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.set_trigger' class='fnname'>set_trigger</a>(&amp;self, trigger: <a class='enum' href='../../bb/led/enum.Trigger.html' title='bb::led::Trigger'>Trigger</a>)</code></h4>
+<div class='docblock'><p>Changes the trigger mode of the LED</p>
+
+<h1 id="example" class='section-header'><a
+                           href="#example">Example</a></h1><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>use</span> <span class='ident'>bb</span>::<span class='ident'>led</span>::{<span class='ident'>Led</span>, <span class='ident'>Heartbeat</span>, <span class='ident'>Zero</span>};
+
+<span class='ident'>Led</span>::<span class='ident'>new</span>(<span class='ident'>Zero</span>).<span class='ident'>set_trigger</span>(<span class='ident'>Heartbeat</span>);
+<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;I&#39;m alive!&quot;</span>);
+</pre>
+</div><h4 id='method.trigger' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.trigger' class='fnname'>trigger</a>(&amp;self) -&gt; <a class='enum' href='../../bb/led/enum.Trigger.html' title='bb::led::Trigger'>Trigger</a></code></h4>
+<div class='docblock'><p>Returns the current trigger mode the LED is using</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "bb";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>
